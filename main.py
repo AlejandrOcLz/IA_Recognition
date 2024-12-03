@@ -22,6 +22,12 @@ def load_face_encodings(image_path):
     face_encoding = face_recognition.face_encodings(image)
     return face_encoding[0] if face_encoding else None
 
+@app.route('/', methods=['GET'])
+def Acceso():
+    return jsonify({
+        "message": "Welcome to the IA FaceRecognition From Alejandro"
+    }), 200
+
 @app.route('/register', methods=['POST'])
 def register_user():
     try:
@@ -116,4 +122,5 @@ def identify_user():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
